@@ -3,9 +3,7 @@ from bs4 import BeautifulSoup
 import csv
 
 details=[]
-headers = {
-             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.70'
-        }
+
 
 def scrap(product):
     for items in product:
@@ -32,7 +30,7 @@ i=1
 
 while i<=20:
         url = f"https://www.amazon.in/s?k=bags&crid=2M096C61O4MLT&qid=1653308124&sprefix=ba%2Caps%2C283&ref=sr_pg_{i}"
-        r = requests.get(url,headers=headers)
+        r = requests.get(url)
         soup = BeautifulSoup(r.content, 'html.parser')
         product=soup.find_all("div" , class_="s-card-container s-overflow-hidden aok-relative puis-include-content-margin puis s-latency-cf-section s-card-border")
         scrap(product)
